@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوة زفاف سميح ونوال</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(193, 143, 52, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(193, 143, 52, 0.8), 0 0 40px rgba(255, 233, 213, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(193, 143, 52, 0.5); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -100% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff8f5;
+            color: #333;
+            text-align: center;
+            direction: rtl;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body:before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 228, 225, 0.7) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(255, 218, 185, 0.5) 0%, transparent 40%);
+            z-index: -2;
+        }
+        
+        body:after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" opacity="0.03"><path d="M10 1C12 3, 17 3, 19 5C17 7, 17 12, 15 14C13 12, 8 12, 6 10C8 8, 8 3, 10 1Z" fill="%23c18f34"/></svg>');
+            background-repeat: repeat;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff8f5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .loader {
+            width: 80px;
+            height: 80px;
+            border: 3px solid transparent;
+            border-top: 3px solid #c18f34;
+            border-right: 3px solid #c18f34;
+            border-radius: 50%;
+            animation: rotate 1.5s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        .loader:before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 3px solid transparent;
+            border-top: 3px solid #e8bba2;
+            border-left: 3px solid #e8bba2;
+            border-radius: 50%;
+            animation: rotate 1s linear infinite reverse;
+        }
+        
+        .loading-message {
+            font-family: 'Amiri', serif;
+            color: #c18f34;
+            font-size: 1.2rem;
+        }
+        
+        .page-content {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .decorative-frame {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .frame-corner {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        .corner-top-right {
+            top: 0;
+            right: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.2"><path d="M100 0 L100 60 C80 60, 60 80, 60 100 L0 100 L0 85 C40 85, 85 40, 85 0 Z" fill="%23c18f34"/></svg>');
+        }
+        
+        .corner-top-left {
+            top: 0;
+            left: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.2"><path d="M0 0 L0 60 C20 60, 40 80, 40 100 L100 100 L100 85 C60 85, 15 40, 15 0 Z" fill="%23c18f34"/></svg>');
+        }
+        
+        .corner-bottom-right {
+            bottom: 0;
+            right: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.2"><path d="M100 100 L100 40 C80 40, 60 20, 60 0 L0 0 L0 15 C40 15, 85 60, 85 100 Z" fill="%23c18f34"/></svg>');
+        }
+        
+        .corner-bottom-left {
+            bottom: 0;
+            left: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.2"><path d="M0 100 L0 40 C20 40, 40 20, 40 0 L100 0 L100 15 C60 15, 15 60, 15 100 Z" fill="%23c18f34"/></svg>');
+        }
+        
+        .floral-decoration {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .flower-top-right {
+            top: 0;
+            right: 20px;
+            width: 300px;
+            height: 300px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.3"><path d="M70 10 C90 20, 90 40, 70 50 C80 60, 70 80, 60 70 C50 90, 30 90, 20 70 C10 80, 0 70, 10 60 C0 50, 10 30, 20 20 C10 10, 30 0, 40 10 C50 0, 70 0, 70 10" fill="%23e8bba2"/></svg>');
+            background-repeat: no-repeat;
+            background-position: top right;
+            transform: rotate(5deg);
+            animation: float 10s ease-in-out infinite;
+        }
+        
+        .flower-bottom-left {
+            bottom: 0;
+            left: 20px;
+            width: 300px;
+            height: 300px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.3"><path d="M70 10 C90 20, 90 40, 70 50 C80 60, 70 80, 60 70 C50 90, 30 90, 20 70 C10 80, 0 70, 10 60 C0 50, 10 30, 20 20 C10 10, 30 0, 40 10 C50 0, 70 0, 70 10" fill="%23e8bba2"/></svg>');
+            background-repeat: no-repeat;
+            background-position: bottom left;
+            transform: rotate(185deg);
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        
+        .petals {
+            position: fixed;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .petal {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" opacity="0.6"><path d="M5 1 C7 3, 7 7, 5 9 C3 7, 3 3, 5 1" fill="%23f9d6c7"/></svg>');
+            background-size: contain;
+            animation: float 6s ease-in-out infinite, fadeIn 2s;
+        }
+        
+        .header {
+            padding: 30px 0;
+            position: relative;
+        }
+        
+        .bismillah {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: #c18f34;
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 0.5s;
+        }
+        
+        .header-divider {
+            width: 200px;
+            height: 10px;
+            margin: 20px auto;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 10" opacity="0.6"><path d="M0 5 L80 5 M120 5 L200 5" stroke="%23c18f34" stroke-width="1"/><circle cx="100" cy="5" r="5" fill="%23c18f34"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 0.8s;
+        }
+        
+        .main-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 250, 245, 0.95));
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 1s;
+        }
+        
+        .main-card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #c18f34, #e3c997, #c18f34);
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .main-card:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.03"><path d="M0 50 C20 30, 80 30, 100 50 C80 70, 20 70, 0 50" stroke="%23c18f34" stroke-width="1" fill="none"/></svg>');
+            background-repeat: repeat;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .invitation-wrapper {
+            position: relative;
+            margin: 0 auto;
+            max-width: 90%;
+        }
+        
+        .invitation-frame {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid #c18f34;
+            border-radius: 15px;
+            z-index: -1;
+            animation: glow 4s infinite;
+        }
+        
+        .invitation-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .invitation-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 40px 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #c18f34, #d4a961);
+            color: white;
+            padding: 14px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(193, 143, 52, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(193, 143, 52, 0.6);
+        }
+        
+        .btn-icon {
+            margin-left: 10px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn:hover .btn-icon {
+            transform: translateX(5px);
+        }
+        
+        .quote {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.6rem;
+            color: #c18f34;
+            max-width: 80%;
+            margin: 40px auto;
+            line-height: 1.8;
+            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 1.2s;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .quote:before, .quote:after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+        }
+        
+        .quote:before {
+            top: 0;
+            right: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.6"><path d="M6,17h3l2-4V7H5v6h3L6,17z M14,17h3l2-4V7h-6v6h3L14,17z" fill="%23c18f34"/></svg>');
+            transform: rotate(180deg);
+        }
+        
+        .quote:after {
+            bottom: 0;
+            left: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.6"><path d="M6,17h3l2-4V7H5v6h3L6,17z M14,17h3l2-4V7h-6v6h3L14,17z" fill="%23c18f34"/></svg>');
+        }
+        
+        .countdown {
+            margin: 40px auto;
+            max-width: 500px;
+            display: flex;
+            justify-content: space-around;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 1.5s;
+        }
+        
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #c18f34;
+            margin-bottom: 5px;
+            min-width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+        
+        .countdown-label {
+            font-size: 1rem;
+            color: #a97b29;
+        }
+        
+        .footer {
+            margin-top: 60px;
+            padding: 20px;
+            color: #a97b29;
+            font-size: 1.1rem;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 1.8s;
+        }
+        
+        .hearts-divider {
+            width: 200px;
+            height: 20px;
+            margin: 20px auto;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 20" opacity="0.6"><path d="M70 10 L90 10" stroke="%23c18f34" stroke-width="1"/><path d="M110 10 L130 10" stroke="%23c18f34" stroke-width="1"/><path d="M100 5 C105 0, 110 5, 100 15 C90 5, 95 0, 100 5" fill="%23c18f34"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .couple-names {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.5rem;
+            color: #c18f34;
+            margin: 10px 0;
+        }
+        
+        .wedding-date {
+            color: #a97b29;
+            margin: 10px 0;
+        }
+        
+        .heart-icon {
+            display: inline-block;
+            color: #c18f34;
+            animation: heartbeat 2s infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .floral-decoration {
+                transform: scale(0.6);
+                opacity: 0.4;
+            }
+            
+            .bismillah {
+                font-size: 2rem;
+            }
+            
+            .quote {
+                font-size: 1.3rem;
+                max-width: 90%;
+            }
+            
+            .main-card {
+                padding: 25px 20px;
+            }
+            
+            .buttons {
+                gap: 15px;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+                font-size: 1.1rem;
+            }
+            
+            .countdown-value {
+                font-size: 2rem;
+                height: 50px;
+            }
+            
+            .countdown-label {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Écran de chargement -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loader"></div>
+        <div class="loading-message">جاري تحميل دعوتكم...</div>
+    </div>
+    
+    <!-- Contenu de la page -->
+    <div class="page-content" id="page-content">
+        <!-- Cadre décoratif -->
+        <div class="decorative-frame">
+            <div class="frame-corner corner-top-right"></div>
+            <div class="frame-corner corner-top-left"></div>
+            <div class="frame-corner corner-bottom-right"></div>
+            <div class="frame-corner corner-bottom-left"></div>
+        </div>
+        
+        <!-- Décorations florales -->
+        <div class="floral-decoration flower-top-right"></div>
+        <div class="floral-decoration flower-bottom-left"></div>
+        
+        <!-- Pétales flottants -->
+        <div class="petals" id="petals-container"></div>
+        
+        <div class="container">
+            <div class="header">
+                <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+                <div class="header-divider"></div>
+            </div>
+            
+            <div class="quote">
+                تزهر الحياة بالحب، وتكتمل السعادة بالزواج
+            </div>
+            
+            <div class="main-card">
+                <div class="card-content">
+                    <div class="invitation-wrapper">
+                        <div class="invitation-frame"></div>
+                        <!-- Remplacez "invitation.gif" par le nom de votre fichier image -->
+                        <img src="invitation.gif" alt="دعوة زفاف سميح ونوال" class="invitation-image">
+                    </div>
+                    
+                    <div class="buttons">
+                        <a href="invitation.pdf" download class="btn">
+                            تحميل الدعوة
+                            <span class="btn-icon">⬇️</span>
+                        </a>
+                        <a href="https://www.google.com/maps/place/Salle+Des+F%C3%AAtes+Chahd+(Hanane)/@34.0135699,-4.9970114,17z/data=!3m1!4b1!4m6!3m5!1s0xd9f8b735aedc80f:0xc0dd4b0e6cc47055!8m2!3d34.0135699!4d-4.9970114!16s%2Fg%2F11dxsm9159?entry=ttu&g_ep=EgoyMDI1MDIxOS4xIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn">
+                            موقع القاعة
+                            <span class="btn-icon">📍</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quote">
+                يشرفنا حضوركم ومشاركتنا لحظات السعادة في يومنا المميز
+            </div>
+            
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">يوم</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">ساعة</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">دقيقة</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">ثانية</div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <div class="hearts-divider"></div>
+                <div class="couple-names">
+                    <span class="heart-icon">❤️</span>
+                    سميح & نوال
+                    <span class="heart-icon">❤️</span>
+                </div>
+                <div class="wedding-date">13 أبريل 2025</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Animation de chargement
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading-screen').style.opacity = '0';
+                document.getElementById('page-content').style.opacity = '1';
+                
+                setTimeout(function() {
+                    document.getElementById('loading-screen').style.display = 'none';
+                }, 1000);
+            }, 1500);
+        });
+        
+        // Ajouter des pétales flottants
+        const petalsContainer = document.getElementById('petals-container');
+        const numberOfPetals = 30;
+        
+        for (let i = 0; i < numberOfPetals; i++) {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            
+            // Position aléatoire
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            petal.style.left = `${left}%`;
+            petal.style.top = `${top}%`;
+            
+            // Rotation aléatoire
+            const rotation = Math.random() * 360;
+            petal.style.transform = `rotate(${rotation}deg)`;
+            
+            // Animation légèrement différente pour chaque pétale
+            const animationDelay = Math.random() * 10;
+            petal.style.animationDelay = `${animationDelay}s`;
+            
+            petalsContainer.appendChild(petal);
+        }
+        
+        // Compte à rebours
+        const countdownDate = new Date('April 13, 2025 16:00:00').getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days < 10 ? '0' + days : days;
+            document.getElementById('hours').textContent = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').textContent = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').textContent = seconds < 10 ? '0' + seconds : seconds;
+            
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = '<div class="quote">لقد حان موعد الزفاف!</div>';
+            }
+        }
+        
+        updateCountdown();
+        const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
